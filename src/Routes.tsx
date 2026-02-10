@@ -2,6 +2,7 @@ import { createBrowserRouter, type RouteObject } from "react-router-dom";
 import RootLayout from "./pages/root";
 import HomePage from "./pages/HomePage/HomePage";
 import UsersPage from "./pages/Users/UsersPage";
+import { usersLoader } from "./pages/Users/UsersLoader";
 import Favorites from "./pages/Favorites/Favorites";
 
 const routes: RouteObject[] = [
@@ -16,6 +17,7 @@ const routes: RouteObject[] = [
       {
         path: "users",
         element: <UsersPage />,
+        loader: usersLoader,
       },
       {
         path: "favorites",
