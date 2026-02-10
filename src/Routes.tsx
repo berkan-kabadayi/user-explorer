@@ -4,8 +4,10 @@ import HomePage from "./pages/HomePage/HomePage";
 import UsersPage from "./pages/Users/UsersPage";
 import { usersLoader } from "./pages/Users/UsersLoader";
 import Favorites from "./pages/Favorites/Favorites";
-import UsersDetailPage from "./pages/Users/UsersDetailPage";
+import UsersDetailPage from "./pages/Users/UserDetailPage";
 import { userDetailLoader } from "./pages/Users/UserDetailLoader";
+import UserPosts from "./pages/Users/UserPosts";
+import { userPostsLoader } from "./pages/Users/UserPostsLoader";
 
 const routes: RouteObject[] = [
   {
@@ -29,6 +31,13 @@ const routes: RouteObject[] = [
         path: "users/:userId",
         element: <UsersDetailPage />,
         loader: userDetailLoader,
+        children: [
+          {
+            path: "posts",
+            element: <UserPosts />,
+            loader: userPostsLoader,
+          },
+        ],
       },
     ],
   },

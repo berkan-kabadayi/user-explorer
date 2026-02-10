@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { Link, Outlet, useLoaderData, useParams } from "react-router-dom";
 import type { UserDetailTypes } from "../../types/types";
 
 function UsersDetailPage() {
@@ -34,6 +34,7 @@ function UsersDetailPage() {
           ))}
         </ul>
       </nav>
+      <Outlet />
     </>
   );
 }

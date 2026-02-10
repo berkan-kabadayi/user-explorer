@@ -9,3 +9,10 @@ export interface UserDetailTypes {
   username: string;
   email: string;
 }
+
+export interface UserPostsType {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
