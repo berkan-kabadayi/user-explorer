@@ -4,6 +4,8 @@ import HomePage from "./pages/HomePage/HomePage";
 import UsersPage from "./pages/Users/UsersPage";
 import { usersLoader } from "./pages/Users/UsersLoader";
 import Favorites from "./pages/Favorites/Favorites";
+import UsersDetailPage from "./pages/Users/UsersDetailPage";
+import { userDetailLoader } from "./pages/Users/UserDetailLoader";
 
 const routes: RouteObject[] = [
   {
@@ -22,6 +24,11 @@ const routes: RouteObject[] = [
       {
         path: "favorites",
         element: <Favorites />,
+      },
+      {
+        path: "users/:userId",
+        element: <UsersDetailPage />,
+        loader: userDetailLoader,
       },
     ],
   },
