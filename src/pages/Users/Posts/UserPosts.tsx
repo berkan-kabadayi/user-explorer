@@ -1,5 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
-import type { UserPostsType } from "../../types/types";
+import type { UserPostsType } from "../../../types/types";
 
 function UserPosts() {
   const posts = useLoaderData() as UserPostsType[];

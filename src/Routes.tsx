@@ -4,10 +4,14 @@ import HomePage from "./pages/HomePage/HomePage";
 import UsersPage from "./pages/Users/UsersPage";
 import { usersLoader } from "./pages/Users/UsersLoader";
 import Favorites from "./pages/Favorites/Favorites";
-import UsersDetailPage from "./pages/Users/UserDetailPage";
-import { userDetailLoader } from "./pages/Users/UserDetailLoader";
-import UserPosts from "./pages/Users/UserPosts";
-import { userPostsLoader } from "./pages/Users/UserPostsLoader";
+import UsersDetailPage from "./pages/Users/DetailPage/UserDetailPage";
+import { userDetailLoader } from "./pages/Users/DetailPage/UserDetailLoader";
+import UserPosts from "./pages/Users/Posts/UserPosts";
+import { userPostsLoader } from "./pages/Users/Posts/UserPostsLoader";
+import UserAlbums from "./pages/Users/Album/UserAlbum";
+import { userAlbumsLoader } from "./pages/Users/Album/UserAlbumLoader";
+import UserAlbumPhotos from "./pages/Users/Album/UserAlbumPhotos";
+import { userAlbumPhotosLoader } from "./pages/Users/Album/UserAlbumPhotosLoader";
 
 const routes: RouteObject[] = [
   {
@@ -36,6 +40,18 @@ const routes: RouteObject[] = [
             path: "posts",
             element: <UserPosts />,
             loader: userPostsLoader,
+          },
+          {
+            path: "albums",
+            element: <UserAlbums />,
+            loader: userAlbumsLoader,
+            children: [
+              {
+                path: ":albumId",
+                element: <UserAlbumPhotos />,
+                loader: userAlbumPhotosLoader,
+              },
+            ],
           },
         ],
       },

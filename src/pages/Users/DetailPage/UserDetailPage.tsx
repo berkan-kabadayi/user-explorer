@@ -1,5 +1,5 @@
 import { Link, Outlet, useLoaderData, useParams } from "react-router-dom";
-import type { UserDetailTypes } from "../../types/types";
+import type { UserDetailTypes } from "../../../types/types";
 
 function UsersDetailPage() {
   const userDetailRoutes = [

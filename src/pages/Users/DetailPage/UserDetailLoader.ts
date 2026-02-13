@@ -5,6 +5,10 @@ export const userDetailLoader = async ({ params }: LoaderFunctionArgs) => {
     `https://jsonplaceholder.typicode.com/users/${params.userId}`
   );
 
+  if (!response.ok) {
+    throw new Error("Albumd could not be fetched");
+  }
+
   const userDetail = await response.json();
   return userDetail;
 };

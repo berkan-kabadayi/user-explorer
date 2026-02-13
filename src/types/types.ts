@@ -16,3 +16,16 @@ export interface UserPostsType {
   title: string;
   body: string;
 }
+
+export interface UserAlbumsTypes {
+  userId: number;
+  id: number;
+  title: string;
+}
+
+export interface AlbumPhotoTypes {
+  albumId: number;
+  id: number;
+  title: string;
+  url: string;
+}
