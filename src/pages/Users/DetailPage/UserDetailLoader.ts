@@ -6,7 +6,7 @@ export const userDetailLoader = async ({ params }: LoaderFunctionArgs) => {
   );
 
   if (!response.ok) {
-    throw new Error("Albumd could not be fetched");
+    throw new Error("User could not be found.");
   }
 
   const userDetail = await response.json();

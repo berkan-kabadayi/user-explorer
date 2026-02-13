@@ -9,5 +9,6 @@ export const userAlbumPhotosLoader = async ({ params }: LoaderFunctionArgs) => {
     throw new Error("Album photos could not be fetched");
   }
 
-  return response.json();
+  const albums = await response.json();
+  return albums.slice(0, 9);
 };

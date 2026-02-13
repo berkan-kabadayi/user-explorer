@@ -12,6 +12,8 @@ import UserAlbums from "./pages/Users/Album/UserAlbum";
 import { userAlbumsLoader } from "./pages/Users/Album/UserAlbumLoader";
 import UserAlbumPhotos from "./pages/Users/Album/UserAlbumPhotos";
 import { userAlbumPhotosLoader } from "./pages/Users/Album/UserAlbumPhotosLoader";
+import UserTodos from "./pages/Users/Todos/UserTodos";
+import { userTodosLoader } from "./pages/Users/Todos/UserTodosLoader";
 
 const routes: RouteObject[] = [
   {
@@ -52,6 +54,11 @@ const routes: RouteObject[] = [
                 loader: userAlbumPhotosLoader,
               },
             ],
+          },
+          {
+            path: "todos",
+            element: <UserTodos />,
+            loader: userTodosLoader,
           },
         ],
       },

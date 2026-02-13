@@ -29,3 +29,10 @@ export interface AlbumPhotoTypes {
   title: string;
   url: string;
 }
+
+export interface UserTodosTypes {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}

@@ -6,7 +6,7 @@ export const userPostsLoader = async ({ params }: LoaderFunctionArgs) => {
   );
 
   if (!response.ok) {
-    throw new Error("Albums could not be fetched");
+    throw new Error("Failed to load user posts.");
   }
 
   const userPosts = await response.json();
