@@ -10,5 +10,5 @@ export const userAlbumPhotosLoader = async ({ params }: LoaderFunctionArgs) => {
   }
 
   const albums = await response.json();
-  return albums.slice(0, 9);
+  return albums;
 };

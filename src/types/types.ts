@@ -16,6 +16,13 @@ export interface UserPostsType {
   title: string;
   body: string;
 }
+export interface UserCommentType {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
+}
 
 export interface UserAlbumsTypes {
   userId: number;
@@ -35,4 +42,9 @@ export interface UserTodosTypes {
   id: number;
   title: string;
   completed: boolean;
+}
+
+export interface UserPostDetailResponse {
+  post: UserPostsType;
+  comments: UserCommentType[];
 }

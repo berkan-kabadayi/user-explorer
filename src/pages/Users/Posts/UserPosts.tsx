@@ -9,7 +9,7 @@ function UserPosts() {
       <ul>
         {posts.map((post) => (
           <li key={post.id}>
-            <Link to={`users/${post.userId}/posts/${post.id}`}>
+            <Link to={`/users/${post.userId}/posts/${post.id}`}>
               {post.title}
             </Link>
           </li>

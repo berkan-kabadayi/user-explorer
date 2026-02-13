@@ -14,11 +14,15 @@ import UserAlbumPhotos from "./pages/Users/Album/UserAlbumPhotos";
 import { userAlbumPhotosLoader } from "./pages/Users/Album/UserAlbumPhotosLoader";
 import UserTodos from "./pages/Users/Todos/UserTodos";
 import { userTodosLoader } from "./pages/Users/Todos/UserTodosLoader";
+import UserPostsDetail from "./pages/Users/Posts/UserPostsDetail";
+import { userPostDetailsLoader } from "./pages/Users/Posts/UserPostsDetailLoader";
+import ErrorPage from "./ErrorPage";
 
 const routes: RouteObject[] = [
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <ErrorPage/>,
     children: [
       {
         index: true,
@@ -61,6 +65,12 @@ const routes: RouteObject[] = [
             loader: userTodosLoader,
           },
         ],
+      },
+      {
+        
+        path: "users/:userId/posts/:postId",
+        element: <UserPostsDetail />,
+        loader: userPostDetailsLoader,
       },
     ],
   },
