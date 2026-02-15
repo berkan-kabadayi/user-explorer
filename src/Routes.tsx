@@ -22,11 +22,12 @@ const routes: RouteObject[] = [
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
         element: <HomePage />,
+        loader: usersLoader,
       },
       {
         path: "users",
@@ -67,7 +68,6 @@ const routes: RouteObject[] = [
         ],
       },
       {
-        
         path: "users/:userId/posts/:postId",
         element: <UserPostsDetail />,
         loader: userPostDetailsLoader,
