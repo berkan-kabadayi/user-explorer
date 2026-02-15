@@ -1,8 +1,27 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import type { AlbumPhotoTypes } from "../../../types/types";
+import { useFavoritesStore } from "../../../store/store";
+import { Button } from "react-bootstrap";
 
 function UserAlbumPhotos() {
   const photos = useLoaderData() as AlbumPhotoTypes[];
+  const { userId } = useParams();
+  const { addFavorite, removeFavorite, isFavorite } = useFavoritesStore();
+
+  const handleFavoriteToggle = (photo: AlbumPhotoTypes) => {
+    if (isFavorite(photo.id)) {
+      removeFavorite(photo.id);
+    } else {
+      addFavorite({
+        id: photo.id,
+        userId: Number(userId),
+        albumId: photo.albumId,
+        title: photo.title,
+        url: photo.url,
+        type: "photo",
+      });
+    }
+  };
 
   return (
     <>
@@ -15,6 +34,13 @@ function UserAlbumPhotos() {
               alt={photo.title}
             />
             <p>{photo.title}</p>
+            <Button
+              size="sm"
+              variant={isFavorite(photo.id) ? "warning" : "outline-warning"}
+              onClick={() => handleFavoriteToggle(photo)}
+            >
+              {isFavorite(photo.id) ? "★" : "☆"}
+            </Button>
           </div>
         ))}
       </div>
