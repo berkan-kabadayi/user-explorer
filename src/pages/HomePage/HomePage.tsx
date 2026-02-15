@@ -1,13 +1,20 @@
 import { Link, useLoaderData } from "react-router-dom";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  Badge,
+  ListGroup,
+} from "react-bootstrap";
 import type { UserTypes } from "../../types/types";
 import { useFavoritesStore } from "../../store/store";
 import { useMemo, useState } from "react";
-import { Button } from "react-bootstrap";
 
 function HomePage() {
   const users = useLoaderData() as UserTypes[];
   const { favorites } = useFavoritesStore();
-
   const [seed] = useState(() => Math.random());
 
   const randomFavorites = useMemo(() => {
@@ -31,60 +38,113 @@ function HomePage() {
   }, [favorites, seed]);
 
   return (
-    <>
-      <div>
-        <h1>👋 Welcome to User Explorer!</h1>
+    <Container className="mt-5">
+      <div className="text-center mb-5">
+        <h1 className="display-4 mb-3">Welcome to User Explorer!</h1>
+        <p className="lead text-muted">
+          Explore users, manage favorites, and organize your content
+        </p>
+      </div>
 
-        <div>
-          <h2>📊 Statistics</h2>
-          <div>
-            <div>
-              <h3>{users.length}</h3>
-              <p>Total Users</p>
-            </div>
-            <div>
-              <h3>{favorites.length}</h3>
-              <p>Favorites</p>
-            </div>
-          </div>
-        </div>
+      <Row className="mb-5">
+        <Col md={6} className="mb-3">
+          <Card className="text-center shadow-sm h-100">
+            <Card.Body>
+              <div style={{ fontSize: "3rem" }} className="mb-2">
+                👥
+              </div>
+              <h2 className="display-5">{users.length}</h2>
+              <Card.Text className="text-muted">Total Users</Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col md={6} className="mb-3">
+          <Card className="text-center shadow-sm h-100">
+            <Card.Body>
+              <div style={{ fontSize: "3rem" }} className="mb-2">
+                ⭐
+              </div>
+              <h2 className="display-5">{favorites.length}</h2>
+              <Card.Text className="text-muted">Favorites</Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
 
-        <div>
-          <h2>⭐ Featured Favorites</h2>
+      <Card className="mb-5 shadow-sm">
+        <Card.Header>
+          <h2 className="mb-0">⭐ Featured Favorites</h2>
+        </Card.Header>
+        <Card.Body>
           {randomFavorites.length === 0 ? (
-            <p>No favorites yet. Start exploring!</p>
+            <div className="text-center py-4">
+              <p className="text-muted mb-3">
+                No favorites yet. Start exploring!
+              </p>
+              <Link to="/users">
+                <Button variant="outline-primary">Browse Users</Button>
+              </Link>
+            </div>
           ) : (
-            <ul>
+            <ListGroup variant="flush">
               {randomFavorites.map((fav) => (
-                <li key={fav.id}>
-                  <span>{fav.type}</span>
+                <ListGroup.Item
+                  key={fav.id}
+                  className="d-flex align-items-center"
+                >
+                  <Badge
+                    bg={fav.type === "post" ? "primary" : "success"}
+                    className="me-3"
+                  >
+                    {fav.type}
+                  </Badge>
                   {fav.type === "post" && (
-                    <Link to={`/users/${fav.userId}/posts/${fav.id}`}>
+                    <Link
+                      to={`/users/${fav.userId}/posts/${fav.id}`}
+                      className="text-decoration-none"
+                    >
                       {fav.title}
                     </Link>
                   )}
                   {fav.type === "photo" && (
-                    <Link to={`/users/${fav.userId}/albums/${fav.albumId}`}>
+                    <Link
+                      to={`/users/${fav.userId}/albums/${fav.albumId}`}
+                      className="text-decoration-none"
+                    >
                       {fav.title}
                     </Link>
                   )}
-                </li>
+                </ListGroup.Item>
               ))}
-            </ul>
+            </ListGroup>
           )}
-        </div>
+        </Card.Body>
+      </Card>
 
-        <div>
-          <h2>👥 Quick Actions</h2>
-          <Link to="/users">
-            <Button>Browse All Users</Button>
-          </Link>
-          <Link to="/favorites">
-            <Button>View All Favorites</Button>
-          </Link>
-        </div>
-      </div>
-    </>
+      <Card className="shadow-sm">
+        <Card.Header>
+          <h2 className="mb-0">👥 Quick Actions</h2>
+        </Card.Header>
+        <Card.Body>
+          <Row>
+            <Col md={6} className="mb-3 mb-md-0">
+              <Link to="/users" className="text-decoration-none">
+                <Button variant="primary" size="lg" className="w-100">
+                  Browse All Users
+                </Button>
+              </Link>
+            </Col>
+            <Col md={6}>
+              <Link to="/favorites" className="text-decoration-none">
+                <Button variant="warning" size="lg" className="w-100">
+                  View All Favorites
+                </Button>
+              </Link>
+            </Col>
+          </Row>
+        </Card.Body>
+      </Card>
+    </Container>
   );
 }
 
