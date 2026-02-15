@@ -48,3 +48,19 @@ export interface UserPostDetailResponse {
   post: UserPostsType;
   comments: UserCommentType[];
 }
+
+export interface FavoriteItem {
+  id: number;
+  userId: number;
+  title: string;
+  type: "post" | "photo";
+  albumId?: number;
+  url?: string;
+}
+
+export interface FavoritesStore {
+  favorites: FavoriteItem[];
+  addFavorite: (item: FavoriteItem) => void;
+  removeFavorite: (id: number) => void;
+  isFavorite: (id: number) => boolean;
+}
