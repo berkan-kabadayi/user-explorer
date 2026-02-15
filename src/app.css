@@ -1,0 +1,154 @@
+/* ========================================
+   VARIABLES
+======================================== */
+
+:root {
+  --transition-base: 300ms ease-in-out;
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ========================================
+   GLOBAL
+======================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 500 !important;
+}
+
+/* ========================================
+   TYPOGRAPHY
+======================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700 !important;
+}
+
+p, span, li, a, div {
+  font-weight: 500 !important;
+}
+
+strong {
+  font-weight: 700 !important;
+}
+
+.lead {
+  font-weight: 500 !important;
+}
+
+/* ========================================
+   CARDS
+======================================== */
+
+.card {
+  box-shadow: var(--shadow-md) !important;
+  transition: transform var(--transition-base), 
+              box-shadow var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.card-title {
+  font-weight: 700 !important;
+}
+
+.card-text {
+  font-weight: 500 !important;
+}
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.btn {
+  font-weight: 600 !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: transform var(--transition-base),
+              box-shadow var(--transition-base);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md) !important;
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* ========================================
+   NAVBAR
+======================================== */
+
+.navbar {
+  box-shadow: var(--shadow-md) !important;
+}
+
+.navbar-brand {
+  font-weight: 700 !important;
+}
+
+.nav-link {
+  font-weight: 500 !important;
+}
+
+/* ========================================
+   BADGES
+======================================== */
+
+.badge {
+  font-weight: 600 !important;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========================================
+   LIST GROUPS
+======================================== */
+
+.list-group-item {
+  font-weight: 500 !important;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========================================
+   IMAGES
+======================================== */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ========================================
+   UTILITIES
+======================================== */
+
+.text-truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.text-muted {
+  font-weight: 500 !important;
+}
+
+.small {
+  font-weight: 500 !important;
+}

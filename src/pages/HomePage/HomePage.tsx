@@ -71,7 +71,31 @@ function HomePage() {
         </Col>
       </Row>
 
-      <Card className="mb-5 shadow-sm">
+      <Card className="shadow-sm">
+        <Card.Header>
+          <h2 className="mb-0">👥 Quick Actions</h2>
+        </Card.Header>
+        <Card.Body>
+          <Row>
+            <Col md={6} className="mb-3 mb-md-0">
+              <Link to="/users" className="text-decoration-none">
+                <Button variant="primary" size="lg" className="w-100">
+                  Browse All Users
+                </Button>
+              </Link>
+            </Col>
+            <Col md={6}>
+              <Link to="/favorites" className="text-decoration-none">
+                <Button variant="warning" size="lg" className="w-100">
+                  View All Favorites
+                </Button>
+              </Link>
+            </Col>
+          </Row>
+        </Card.Body>
+      </Card>
+
+      <Card className="my-5 shadow-sm">
         <Card.Header>
           <h2 className="mb-0">⭐ Featured Favorites</h2>
         </Card.Header>
@@ -118,30 +142,6 @@ function HomePage() {
               ))}
             </ListGroup>
           )}
-        </Card.Body>
-      </Card>
-
-      <Card className="shadow-sm">
-        <Card.Header>
-          <h2 className="mb-0">👥 Quick Actions</h2>
-        </Card.Header>
-        <Card.Body>
-          <Row>
-            <Col md={6} className="mb-3 mb-md-0">
-              <Link to="/users" className="text-decoration-none">
-                <Button variant="primary" size="lg" className="w-100">
-                  Browse All Users
-                </Button>
-              </Link>
-            </Col>
-            <Col md={6}>
-              <Link to="/favorites" className="text-decoration-none">
-                <Button variant="warning" size="lg" className="w-100">
-                  View All Favorites
-                </Button>
-              </Link>
-            </Col>
-          </Row>
         </Card.Body>
       </Card>
     </Container>

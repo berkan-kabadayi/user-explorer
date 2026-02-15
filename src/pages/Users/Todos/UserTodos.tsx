@@ -22,7 +22,10 @@ function UserTodos() {
 
       <ListGroup>
         {todos.map((todo) => (
-          <ListGroup.Item key={todo.id} className="d-flex align-items-center">
+          <ListGroup.Item
+            key={todo.id}
+            className="d-flex align-items-center m-1"
+          >
             <span className="me-3" style={{ fontSize: "1.5rem" }}>
               {todo.completed ? "✅" : "⬜"}
             </span>
