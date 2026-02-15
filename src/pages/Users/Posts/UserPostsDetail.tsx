@@ -1,4 +1,6 @@
 import { useLoaderData, useParams, Link } from "react-router-dom";
+import { Card, Badge, Button, Container } from "react-bootstrap";
+//                                ^^^^^^^^^ Import'a ekle
 import type { UserPostDetailResponse } from "../../../types/types";
 
 function UserPostsDetail() {
@@ -6,30 +8,57 @@ function UserPostsDetail() {
   const { userId } = useParams();
 
   return (
-    <div>
-      <Link to={`/users/${userId}/posts`}>← Back to Posts</Link>
+    <Container className="mt-4">
+      {/* ^^^^^^^^^ Buraya ekle */}
+      
+      {/* Back Button */}
+      <Link to={`/users/${userId}/posts`} className="text-decoration-none">
+        <Button variant="outline-secondary" size="sm" className="mb-3">
+          ← Back to Posts
+        </Button>
+      </Link>
 
-      <div>
-        <h2>{post.title}</h2>
-        <p>{post.body}</p>
+      {/* Post Card */}
+      <Card className="mb-4">
+        <Card.Body>
+          <Card.Title as="h2">{post.title}</Card.Title>
+          <Card.Text className="text-muted">{post.body}</Card.Text>
+        </Card.Body>
+      </Card>
+
+      {/* Comments Section */}
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h3>Comments</h3>
+        <Badge bg="secondary">{comments.length}</Badge>
       </div>
 
-      <hr />
-
-      <h3>Comments ({comments.length})</h3>
       {comments.length === 0 ? (
-        <p>No comments yet.</p>
+        <Card>
+          <Card.Body className="text-center text-muted">
+            No comments yet.
+          </Card.Body>
+        </Card>
       ) : (
-        <ul>
+        <>
           {comments.map((comment) => (
-            <li key={comment.id}>
-              <strong>{comment.name}</strong> ({comment.email})
-              <p>{comment.body}</p>
-            </li>
+            <Card key={comment.id} className="mb-3">
+              <Card.Body>
+                <div className="d-flex align-items-start mb-2">
+                  <div className="me-2">👤</div>
+                  <div>
+                    <strong>{comment.name}</strong>
+                    <br />
+                    <small className="text-muted">{comment.email}</small>
+                  </div>
+                </div>
+                <Card.Text>{comment.body}</Card.Text>
+              </Card.Body>
+            </Card>
           ))}
-        </ul>
+        </>
       )}
-    </div>
+    </Container>
+    
   );
 }
 
