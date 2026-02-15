@@ -1,7 +1,7 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useParams, Link } from "react-router-dom";
+import { Container, Row, Col, Card, Button, Badge } from "react-bootstrap";
 import type { AlbumPhotoTypes } from "../../../types/types";
 import { useFavoritesStore } from "../../../store/store";
-import { Button } from "react-bootstrap";
 
 function UserAlbumPhotos() {
   const photos = useLoaderData() as AlbumPhotoTypes[];
@@ -24,27 +24,46 @@ function UserAlbumPhotos() {
   };
 
   return (
-    <>
-      <h3>Album Photos</h3>
-      <div>
-        {photos.slice(0, 12).map((photo) => (
-          <div key={photo.id}>
-            <img
-              src={`https://picsum.photos/150?random=${photo.id}`}
-              alt={photo.title}
-            />
-            <p>{photo.title}</p>
-            <Button
-              size="sm"
-              variant={isFavorite(photo.id) ? "warning" : "outline-warning"}
-              onClick={() => handleFavoriteToggle(photo)}
-            >
-              {isFavorite(photo.id) ? "★" : "☆"}
-            </Button>
-          </div>
-        ))}
+    <Container className="mt-4">
+      <Link to={`/users/${userId}/albums`} className="text-decoration-none">
+        <Button variant="outline-secondary" size="sm" className="mb-3">
+          ← Back to Albums
+        </Button>
+      </Link>
+
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2>Album Photos</h2>
+        <Badge bg="secondary">{photos.length}</Badge>
       </div>
-    </>
+
+      <Row>
+        {photos.slice(0, 12).map((photo) => (
+          <Col key={photo.id} md={4} lg={3} className="mb-4">
+            <Card>
+              <Card.Img 
+                variant="top" 
+                src={`https://picsum.photos/300?random=${photo.id}`}
+                alt={photo.title}
+                style={{ height: '200px', objectFit: 'cover' }}
+              />
+              <Card.Body>
+                <Card.Text className="small text-truncate" title={photo.title}>
+                  {photo.title}
+                </Card.Text>
+                <Button
+                  size="sm"
+                  variant={isFavorite(photo.id) ? "warning" : "outline-warning"}
+                  onClick={() => handleFavoriteToggle(photo)}
+                  className="w-100"
+                >
+                  {isFavorite(photo.id) ? "★ Favorited" : "☆ Add to Favorites"}
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 }
 

@@ -52,13 +52,11 @@ const routes: RouteObject[] = [
             path: "albums",
             element: <UserAlbums />,
             loader: userAlbumsLoader,
-            children: [
-              {
-                path: ":albumId",
-                element: <UserAlbumPhotos />,
-                loader: userAlbumPhotosLoader,
-              },
-            ],
+          },
+          {
+            path: "albums/:albumId",
+            element: <UserAlbumPhotos />,
+            loader: userAlbumPhotosLoader,
           },
           {
             path: "todos",
